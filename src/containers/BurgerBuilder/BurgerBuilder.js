@@ -16,12 +16,21 @@ export default class BurgerBuilder extends Component {
       }
     }
   }
+  addIngredientHandler= (type)=>{
+    let oldCount = this.state.ingredients[type];
+    oldCount++;
+    let oldState = {
+      ...this.state.ingredients
+    };
+    oldState[type]= oldCount;
+    this.setState({ingredients:oldState})
+  }
   render() {
     return (
       <div>
         <Wrapper>
             <Burger ingredients={this.state.ingredients} />
-            <BuildControls/>
+            <BuildControls addIngredient={this.addIngredientHandler}/>
         </Wrapper>
       </div>
     )
